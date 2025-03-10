@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS reset -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/reset-css@3.0.0/reset.min.css"/>
+
+    <!-- Google fonts: importing Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Link to external CSS style -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- 3rd party JS libraries-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.12/build/css/intlTelInput.css">
+
+    <!-- jQuery UI JS for selecting destination -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+    <title>Halu Travel</title>
+</head>
+<body>
+    <!-- Header section -->
+    <header class="header">
+        <!-- Logo section -->
+        <div class="logo">Halu <span>Travel</span></div>
+
+        <!-- Burger menu icon for Mobile ver -->
+        <img src="assets/images/icon-menu.svg" alt="Menu" class="burger-menu" id="burgerMenu">
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <span class="close-btn" id="closeSidebar">&times;</span>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#top-book">Destinations</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+        
+        <!-- Navigation bar -->
+        <nav class="navbar" id="navbar">
+            <ul>
+                <li><a href="#home">Home</a> </li>
+                <li><a href="#top-book">Destinations</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero section -->
+    <section id="home" class="hero-section">
+        <!-- Background images  -->
+        <div class="glide hero-slider">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide hero-background"> <img src="assets/images/hero image.jpg" alt="Hero Image 1"></li>
+                    <li class="glide__slide hero-background"><img src="assets/images/hero image1.jpg" alt="Hero Image 2"></li>
+                    <li class="glide__slide hero-background"><img src="assets/images/hero image2.jpg" alt="Hero Image 3"></li>
+                    <li class="glide__slide hero-background"><img src="assets/images/hero image3.jpg" alt="Hero Image 4"></li>
+                    <li class="glide__slide hero-background"><img src="assets/images/hero image4.jpg" alt="Hero Image 5"></li>
+                    <li class="glide__slide hero-background"><img src="assets/images/hero image5.jpg" alt="Hero Image 6"></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Heading -->
+        <div class="heading">
+            <h1>Explore More, Worry Less</h1>
+            <h3>Explore beautiful places in Vietnam with Halu Travel</h3>
+        </div>
+
+        <!-- Search box  -->
+
+        <div class="search-content">
+            <div class="main-content">
+                <div class="input-location">
+                    <img  src="assets/images/location.svg" alt="Location">
+                    <div class="details">
+                        <div class="text-wrapper">Location</div>
+                        <input class="text-wrapper-2" type="text" id="destination" placeholder="Add destination">
+                    </div>
+                </div>
+                <div class="input">
+                    <img  src="assets/images/calendar.svg" alt="check in">
+                    <div class="details">
+                        <div class="text-wrapper">Check In</div>
+                        <input class="text-wrapper-2" type="text" id="checkin" placeholder="Add dates">
+                    </div>
+                </div>
+                <div class="input">
+                    <img  src="assets/images/calendar.svg" alt="check out">
+                    <div class="details">
+                        <div class="text-wrapper">Check Out</div>
+                        <input class="text-wrapper-2" type="text" id="checkout" placeholder="Add dates">
+                    </div>
+                </div>
+                <div class="input" id="guests-container">
+                    <img  src="assets/images/profile-2user.svg" alt="guests">
+                    <div class="details">
+                        <div class="text-wrapper">Guests</div>
+                        <div id="guests" class="guest-dropdown-toggle"> Add guests 
+                            <img src="assets/images/arrow-down.svg" alt="dropdown icon">
+                        </div>
+                        <!-- <input class="text-wrapper-2" type="text" id="guests" placeholder="Add guests "> -->
+
+                        <!-- Dropdown option -->
+                        <div id="guest-dropdown" class="guest-dropdown">
+                            <div class="guest-row">
+                                <span class="guest-label">Adult (12+)</span>
+                                <select id="adult-count">
+                                    <option value="1" selected>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="guest-row">
+                                <span class="guest-label">Child (2-11)</span>
+                                <select id="child-count">
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="guest-row">
+                                <span class="guest-label">Infant</span>
+                                <select id="infant-count">
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <button id="close-guest-dropdown">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="search-btn"> <img src="assets/images/search-normal.svg" alt="search"> Search</button>
+        </div>
+
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <h2>WHY CHOOSE US?</h2>
+        <div class="features">
+            <div class="feature">
+                <img src="assets/images/price.png" alt="Competitive Prices">
+                <h3>Competitive Prices</h3>
+                <p>Travel more without overspending. We offer affordable tours, exclusive deals, and transparent pricing.</p>
+            </div>
+            <div class="feature">
+                <img src="assets/images/booking.png" alt="Secure Booking">
+                <h3>Secure Booking</h3>
+                <p>Our safe and encrypted payment system ensures your personal and financial details are always protected.</p>
+            </div>
+            <div class="feature">
+                <img src="assets/images/repeat.png" alt="Seamless Experience">
+                <h3>Seamless Experience</h3>
+                <p>Enjoy easy reservations, reliable support, perfectly planned adventures, and hassle-free travel. </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Book Now Section -->
+    <section id="top-book" class="top-book-now">
+        <h2>TOP BOOK NOW</h2>
+        <div class="top-book-container">
+            <div class="resort-container">
+                <img src="assets/images/binh an village.jpg" alt="Binh An Village Resort">
+                <div class="rating"><img src="assets/images/star.svg" alt="Star"> 4.8</div>
+                <h3>Binh An Village Resort</h3>
+                <p><img src="assets/images/location.svg" alt="Location"> Tuyen Lam Lake, Da Lat</p>
+                <span>$130</span>
+            </div>
+    
+            <div class="resort-container">
+                <img src="assets/images/sapa eco.jpg" alt="Sapa Eco Homestay">
+                <div class="rating"><img src="assets/images/star.svg" alt="Star"> 4.8</div>
+                <h3>Sapa Eco Homestay</h3>
+                <p><img src="assets/images/location.svg" alt="Location"> Ta Van, Sapa</p>
+                <span>$55</span>
+            </div>
+    
+            <div class="resort-container">
+                <img src="assets/images/Ann hotel.jpg" alt="Ann Hotel & Spa">
+                <div class="rating"><img src="assets/images/star.svg" alt="Star"> 4.8</div>
+                <h3>Ann Hotel & Spa</h3>
+                <p><img src="assets/images/location.svg" alt="Location"> Kien Giang, Phu Quoc</p>
+                <span>$41</span>
+            </div>
+    
+            <div class="resort-container">
+                <img src="assets/images/the anam.jpg" alt="The Anam">
+                <div class="rating"><img src="assets/images/star.svg" alt="Star"> 4.8</div>
+                <h3>The Anam</h3>
+                <p><img src="assets/images/location.svg" alt="Location"> Cam Ranh, Khanh Hoa</p>
+                <span>$300</span>
+            </div>
+    
+            <div class="resort-container">
+                <img src="assets/images/mercure da nang.jpg" alt="Mercure Danang Village">
+                <div class="rating"><img src="assets/images/star.svg" alt="Star"> 4.8</div>
+                <h3>Mercure Danang Village</h3>
+                <p><img src="assets/images/location.svg" alt="Location"> Hoa Vang, Da Nang</p>
+                <span>$235</span>
+            </div>
+    
+            <div class="resort-container">
+                <img src="assets/images/Sapa house.jpg" alt="Sapa House Hotel">
+                <div class="rating"><img src="assets/images/star.svg" alt="Star"> 4.8</div>
+                <h3>Sapa House Hotel</h3>
+                <p><img src="assets/images/location.svg" alt="Location"> Thac Bac, Sapa</p>
+                <span>$41</span>
+            </div>
+    
+            <div class="resort-container">
+                <img src="assets/images/paris-deli.jpg" alt="Paris Deli Danang">
+                <div class="rating"><img src="assets/images/star.svg" alt="Star"> 4.8</div>
+                <h3>Paris Deli Danang</h3>
+                <p><img src="assets/images/location.svg" alt="Location"> My Khe Beach, Danang</p>
+                <span>$205</span>
+            </div>
+    
+            <div class="resort-container">
+                <img src="assets/images/spring garden.jpg" alt="Spring Garden Villa">
+                <div class="rating"><img src="assets/images/star.svg" alt="Star"> 4.8</div>
+                <h3>Spring Garden Villa</h3>
+                <p><img src="assets/images/location.svg" alt="Location"> Minh Mang Street, Hue</p>
+                <span>$39</span>
+            </div>
+        </div>
+        <button class="see-all-btn">See all →</button>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="news-section">
+        <h2>NEWS</h2>
+        <div class="news-glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides-news">
+                    <li class="glide__slide-news">
+                        <div class="news-card">
+                            <img src="assets/images/news1 - ha long bay.jpg" alt="Halong Bay">
+                            <div class="news-content">
+                                <div class="news-date">March 03, 2025</div>
+                                <h3>6 Things To Do In Halong Bay In 2025</h3>
+                                <p>UNESCO recognized Halong Bay as a World Heritage Site, making it an attractive destination...</p>
+                                <a href="#" class="see-more">See more</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide-news">
+                        <div class="news-card">
+                            <img src="assets/images/son-doong-cnbc-9148.jpg" alt="Nature in Vietnam">
+                            <div class="news-content">
+                                <div class="news-date">March 03, 2025</div>
+                                <h3>Vietnam - The Nature Wonder of Asia</h3>
+                                <p>Vietnam was named Asia’s Leading Nature Destination for the third time...</p>
+                                <a href="#" class="see-more">See more</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide-news">
+                        <div class="news-card">
+                            <img src="assets/images/bun-cha-ha-noi-01.jpg" alt="Vietnamese Food">
+                            <div class="news-content">
+                                <div class="news-date">March 03, 2025</div>
+                                <h3>Must-try noodles in Vietnam</h3>
+                                <p>Vietnam is a rising star in the world’s tourism map not only for its amazing food...</p>
+                                <a href="#" class="see-more">See more</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide-news">
+                        <div class="news-card">
+                            <img src="assets/images/bun-cha-ha-noi-01.jpg" alt="Vietnamese Food">
+                            <div class="news-content">
+                                <div class="news-date">March 03, 2025</div>
+                                <h3>Must-try noodles in Vietnam</h3>
+                                <p>Vietnam is a rising star in the world’s tourism map not only for its amazing food...</p>
+                                <a href="#" class="see-more">See more</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">&#10094;</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-form">
+                <form id="contact-form" data-parsley-validate>
+                    <div class="form-group">
+                        <h5>Your Name</h5>
+                        <input id="yourname" name ="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <h5>Your Email</h5>
+                        <input id="your-email" name="email" required data-parsley-type="email" autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <h5 for="phone">Phone Number</h5>
+                        <input id="your-phone" type="tel" id="phone" name="phone" required autocomplete="phone">
+                    </div>
+                    <div class="form-group">
+                        <h5>Subject</h5>
+                        <input id="subject" type="text" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <h5>Your Message</h5>
+                        <textarea name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h2>CONTACT US</h2>
+                <p>We’d love to hear from you! Whether you have questions about our destinations, need help planning your trip, we’re here to help.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Social Media & Information -->
+            <div class="left-footer">
+                <div class="main-footer">
+                    <div class="social-links">
+                        <div class="logo">Halu <span>Travel</span></div>
+                        <p>Cruise, explore, and embrace Vietnam’s wild beauty!</p>
+                        <h4 class="title">Follow Us</h4>
+                        <div class="icon-list">
+                            <a href="#" class="social-icon instagram"><img src="assets/images/icon_instagram.svg" alt="icon-instagram"></a>
+                            <a href="#" class="social-icon tiktok"><img src="assets/images/icon-tiktok.svg" alt="icon-tiktok"></a>
+                            <a href="#" class="social-icon whatsapp"><img src="assets/images/icon-whatsapp.svg" alt="icon-whatsapp"></a>
+                            <a href="#" class="social-icon youtube"><img src="assets/images/icon_youtube.svg" alt="icon-youtube"></a>
+                        </div>
+                    </div>
+    
+                    <div>
+                        <a href="#home">Home</a>  
+                        <a href="#top-book">Destinations</a>
+                        <a href="#news">News</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+
+                <div class="subscribe">
+                    <p class="updates">Get Updates</p>
+                    <input id="email" type="email" placeholder="Enter Your Email" autocomplete="email">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery UI for Autocomplete and Datepicker -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Cleave.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+
+    <!-- Parsley.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+
+    <!-- Glide.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+
+    <!-- Intl-Tel-Input -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.12/build/js/intlTelInput.min.js"></script>
+
+    <!-- JavaScript link for Sidebar -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

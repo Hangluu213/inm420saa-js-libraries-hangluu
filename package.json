@@ -1,0 +1,15 @@
+{
+  "name": "inm420saa-js-libraries-hangluu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server --baseDir=\"public\""
+  },
+  
+  "author": "Hang Luu",
+  "license": "private",
+  "private": true,
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
